@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  django:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./dockerdjango:/app
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    environment:
+      MYSQL_DATABASE: 'repasoBD1'
+      MYSQL_USER: 'itsv'
+      MYSQL_PASSWORD: 'itsv'
+      MYSQL_ROOT_PASSWORD: 'itsv'
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    environment:
+      PMA_ARBITRARY: 1
+      MYSQL_ROOT_PASSWORD: 'itsv'
+    depends_on:
+      - db
+
+volumes:
+  mysql_data:
