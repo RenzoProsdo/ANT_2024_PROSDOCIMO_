@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'docker.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'cabfly',
+        'NAME': 'repasoBD1',
         'USER': 'itsv',
         'PASSWORD': 'itsv',
         'HOST': 'db',
